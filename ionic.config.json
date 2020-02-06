@@ -1,0 +1,7 @@
+{
+  "name": "dietapp",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

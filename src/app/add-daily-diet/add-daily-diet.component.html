@@ -1,0 +1,120 @@
+<ion-header>
+    <ion-toolbar>
+      <ion-title>
+        Diet App
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content>
+  <div class="container">
+    <div [hidden]="submitted">
+      <h1>Add daily diet</h1>
+      <form (ngSubmit)="onSubmit()" #addDailyDietForm="ngForm">
+        <input type="hidden" id="userId" name="userId" [(ngModel)]="model.userId" />
+        <div class="form-group">
+          <label for="day">Day</label>
+          <input type="date" class="form-control" id="day" name="day" [(ngModel)]="model.day" required>
+        </div>
+        <h3>Breakfast</h3>
+        <div class="form-group">
+          <label for="breakfast_mealId">Meal</label>
+          <select class="form-control" id="breakfast_mealId" name="breakfast_mealId" #breakfast_mealId="ngModel" [(ngModel)]="model.breakfast.mealId" required>
+            <option *ngFor="let meal of meals" [value]="meal.id">{{meal.description}}</option>
+          </select>
+
+          <div *ngIf="breakfast_mealId.touched && breakfast_mealId.invalid"
+             class="alert alert-danger">
+            Please select a breakfast meal
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="breakfast.desertId">Desert</label>
+          <select class="form-control" name="breakfast_desertId" #breakfast_desertId="ngModel" [(ngModel)]="model.breakfast.desertId" required>
+            <option *ngFor="let desert of deserts" [value]="desert.id">{{desert.description}}</option>
+          </select>
+          <div *ngIf="breakfast_desertId.touched && breakfast_desertId.invalid"
+             class="alert alert-danger">
+            Please specify a breakfast desert
+          </div>
+        </div>
+
+        <h3>Lunch</h3>
+        <div class="form-group">
+          <label for="lunch_mealId">Meal</label>
+          <select class="form-control" id="lunch_mealId" name="lunch_mealId" #lunch_mealId="ngModel" [(ngModel)]="model.lunch.mealId" required>
+            <option *ngFor="let meal of meals" [value]="meal.id">{{meal.description}}</option>
+          </select>
+          <div *ngIf="lunch_mealId.touched && lunch_mealId.invalid"
+             class="alert alert-danger">
+            Please select a lunch meal
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="lunch.desertId">Desert</label>
+          <select class="form-control" name="lunch_desertId" #lunch_desertId="ngModel" [(ngModel)]="model.lunch.desertId">
+            <option selected>(No desert)</option>
+            <option *ngFor="let desert of deserts" [value]="desert.id">{{desert.description}}</option>
+          </select>
+          <div *ngIf="lunch_desertId.touched && lunch_desertId.invalid"
+             class="alert alert-danger">
+            Please select a lunch desert
+          </div>
+        </div>
+
+        <h3>Dinner</h3>
+        <div class="form-group">
+          <label for="dinner_mealId">Meal</label>
+          <select class="form-control" id="dinner_mealId" name="dinner_mealId" #dinner_mealId="ngModel" [(ngModel)]="model.dinner.mealId" required>
+            <option *ngFor="let meal of meals" [value]="meal.id">{{meal.description}}</option>
+          </select>
+          <div *ngIf="dinner_mealId.touched && dinner_mealId.invalid"
+             class="alert alert-danger">
+            Please select a dinner meal
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="dinner.desertId">Desert</label>
+          <select class="form-control" name="dinner_desertId" #dinner_desertId="ngModel" [(ngModel)]="model.dinner.desertId">
+            <option selected>(No desert)</option>
+            <option *ngFor="let desert of deserts" [value]="desert.id">{{desert.description}}</option>
+          </select>
+          <div *ngIf="dinner_desertId.touched && dinner_desertId.invalid"
+             class="alert alert-danger">
+            Please select a dinner desert
+          </div>
+        </div>
+
+        <button type="submit" [disabled]="!addDailyDietForm.form.valid" (click)="addNewDailyDiet(model)" class="btn btn-success" style="margin-right: 20px;">Add</button>
+        <a [routerLink]="['/']" class="btn btn-primary">Cancel</a>
+
+      </form>
+    </div>
+
+    <!-- <div [hidden]="!submitted">
+        <h2>You submitted the following:</h2>
+        <div class="row">
+            <div class="col-xs-3">Day of diet</div>
+            <div class="col-xs-9">{{ model.day }}</div>
+        </div>
+        <div class="row">
+          <h3>Breakfast</h3>
+          <div class="col-xs-3">Meal</div>
+          <div class="col-xs-9">{{ model.name }}</div>
+        </div>
+        <div class="row">
+          <div class="col-xs-3">Alter Ego</div>
+          <div class="col-xs-9">{{ model.alterEgo }}</div>
+        </div>
+        <div class="row">
+          <div class="col-xs-3">Power</div>
+          <div class="col-xs-9">{{ model.power }}</div>
+        </div>
+        <br>
+        <button class="btn btn-primary" (click)="submitted=false">Edit</button>
+      </div> -->
+  </div>
+</ion-content>

@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Diet App
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<div class="container">
+  <div>
+    <h1>Login</h1>
+    <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
+      
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" class="form-control" id="email" name="email" [(ngModel)]="model.email" required>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" class="form-control" id="password" name="password" [(ngModel)]="model.password" required>
+      </div>
+
+      <button type="submit" [disabled]="!loginForm.form.valid" (click)="login(model)" class="btn btn-success" style="margin-right: 20px;">Submit</button>
+      <a [routerLink]="['/']" class="btn btn-primary">Cancel</a>
+
+    </form>
+    <div style="padding-top: 20px">
+      <a [routerLink]="['/register']">Register a new account instead</a>
+    </div>
+  </div>
+</div>
+</ion-content>

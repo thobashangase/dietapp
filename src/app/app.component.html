@@ -1,0 +1,14 @@
+<ion-app>
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>
+        Diet App
+      </ion-title>
+      <ion-buttons slot="end" [hidden]="!currentUser">
+        <ion-button (click)="logout()">Logout</ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-router-outlet></ion-router-outlet>
+</ion-app>
